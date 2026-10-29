@@ -23,7 +23,7 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 # --------------------------------------------------
 
 host = 'localhost'
-database = (r'C:\Users\Aluno\Downloads\banco_lucrafay\BANCO.FDB')
+database = (r'C:\Users\Aluno\Downloads\lucrafy-banco\banco_lucrafay\banco_lucrafay\BANCO.FDB')
 user = 'sysdba'
 password = 'sysdba'
 
@@ -2137,9 +2137,10 @@ def unidade_medida():
 
 
             cursor.execute("""
-                INSERT INTO UNIDADE_MEDIDA (NOME, SIGLA)
-                VALUES (?, ?)
-            """, (nome, sigla))
+                INSERT INTO UNIDADE_MEDIDA 
+                (NOME, SIGLA, ID_USUARIO)
+                VALUES (?, ?, ?)
+            """, (nome, sigla, session['id_usuario']))
 
             con.commit()
 
